@@ -24,8 +24,8 @@ function App() {
 
     if (data == "") {
     } else {
-      // e.preventDefault();
-      alert(
+      e.preventDefault();
+      console.log(
         "Number : " +
           data.sr +
           "\n" +
@@ -46,10 +46,11 @@ function App() {
       );
     }
 
+    console.log(data);
     const jsonData = JSON.stringify(data);
-    console.log(jsonData);
-
-    // })
+    console.log(jsonData) ;
+    empdata.push(data);
+    // console.log(empdata);
   };
 
   // var file = data;
