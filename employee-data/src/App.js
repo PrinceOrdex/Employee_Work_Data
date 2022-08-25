@@ -3,7 +3,7 @@ import "./style.css"
 
 function App() {
   const [data, setData] = useState({
-    email: "", date: "", task: "", description: "", stat: ""
+    sr: null, email: "", date: "", task: "", description: "", stat: ""
   })
 
   let name, value;
@@ -27,7 +27,7 @@ function App() {
             </div>
             <div class="form-group">
               <label for="date">Date</label>
-              <input type="date" className="form-control" id="date" aria-describedby="date" required />
+              <input type="date" className="form-control" id="date" aria-describedby="date" required onChange={getInput} name="date" value={data.date} />
             </div>
             <h5 className='text-center mt-5'>Enter Your Tasks</h5>
 
@@ -42,12 +42,12 @@ function App() {
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row" className='px-0 pr-1'><input type="number" className='w-100 py-2 px-0 border-0 border-right' required /></th>
+                  <th scope="row" className='px-0 pr-1'><input type="number" className='w-100 py-2 px-0 border-0 border-right' required onChange={getInput} name="sr" value={data.sr} /></th>
                   {/* <td className='px-0 pr-1'><input type="text" className='w-100 py-2 px-0 border-0' /></td> */}
-                  <td className='px-0 pr-1'><textarea name="" id="" rows="1" className='w-100 py-2 border-0 required' style={{ resize: 'none' }}></textarea></td>
+                  <td className='px-0 pr-1'><textarea name="" id="" rows="1" className='w-100 py-2 border-0 required' style={{ resize: 'none' }} onChange={getInput} name="task" value={data.task} ></textarea></td>
                   {/* <td className='px-0 pr-1'><input type="text" className='w-100 py-2 border-0' /></td> */}
-                  <td className='px-0 pr-1'><textarea name="" id="" rows="1" className='w-100 py-2 border-0 required' style={{ resize: 'none' }}></textarea></td>
-                  <td className='px-0'><input type="text" className='w-100 py-2 border-0' /></td>
+                  <td className='px-0 pr-1'><textarea name="" id="" rows="1" className='w-100 py-2 border-0 required' style={{ resize: 'none' }} onChange={getInput} name="description" value={data.description} ></textarea></td>
+                  <td className='px-0'><input type="text" className='w-100 py-2 border-0' onChange={getInput} name="stat" value={data.stat} /></td>
                 </tr>
               </tbody>
             </table>
