@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./style.css";
-import { empdata } from "./empData";
+// import { empdata } from "./empData";
+// import validator from "validator";
 
 function App() {
+  const [error, setError] = useState(null);
   const [data, setData] = useState({
     sr: null,
     email: "",
@@ -12,19 +14,37 @@ function App() {
     stat: "",
   });
 
+  function isValidEmail(email) {
+    // return /\S+@\S+\.\S+/.test(email);
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+  }
+
   let name, value;
   const getInput = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setData({ ...data, [name]: value });
+    // setData({ ...data, [name]: value });
+
+    if (name === "email") {
+      if (!isValidEmail(value)) {
+        setError("Email is invalid");
+        setData({ ...data, [name]: value });
+      } else {
+        setError(null);
+        setData({ ...data, [name]: value });
+      }
+    } else {
+      setData({ ...data, [name]: value });
+    }
   };
 
   const getData = (e) => {
+    // e.preventDefault();
     const d = new Date(data.date).toLocaleDateString();
 
-    if (data == "") {
+    if (data === "") {
     } else {
-      e.preventDefault();
+      // e.preventDefault();
       console.log(
         "Number : " +
           data.sr +
@@ -48,18 +68,9 @@ function App() {
 
     console.log(data);
     const jsonData = JSON.stringify(data);
-    console.log(jsonData) ;
-    empdata.push(data);
-    // console.log(empdata);
+    console.log(jsonData);
   };
 
-  // var file = data;
-  // var obj = data;
-  // sendDataSomewhere = function empdata(file) {
-  //   empdata.writeFile(file, obj, function (err) {
-  //     console.error(err);
-  //   });
-  // };
   return (
     <>
       <div className="container-fluid heading">
@@ -75,11 +86,12 @@ function App() {
                 className="form-control"
                 id="email"
                 aria-describedby="emailHelp"
-                required
                 onChange={getInput}
                 name="email"
                 value={data.email}
+                required
               />
+              {error && <h5 style={{ color: "red" }}>{error}</h5>}
             </div>
             <div class="form-group">
               <label for="date">Date</label>
@@ -88,10 +100,10 @@ function App() {
                 className="form-control"
                 id="date"
                 aria-describedby="date"
-                required
                 onChange={getInput}
                 name="date"
                 value={data.date}
+                required
               />
             </div>
             <h5 className="text-center mt-5">Enter Your Tasks</h5>
@@ -117,10 +129,10 @@ function App() {
                     <input
                       type="number"
                       className="w-100 py-2 px-0 border-0 border-right"
-                      required
                       onChange={getInput}
                       name="sr"
                       value={data.sr}
+                      required
                     />
                   </th>
                   {/* <td className='px-0 pr-1'><input type="text" className='w-100 py-2 px-0 border-0' /></td> */}
@@ -133,6 +145,7 @@ function App() {
                       onChange={getInput}
                       name="task"
                       value={data.task}
+                      required
                     ></textarea>
                   </td>
                   {/* <td className='px-0 pr-1'><input type="text" className='w-100 py-2 border-0' /></td> */}
@@ -145,6 +158,7 @@ function App() {
                       onChange={getInput}
                       name="description"
                       value={data.description}
+                      required
                     ></textarea>
                   </td>
                   <td className="px-0">
@@ -154,6 +168,7 @@ function App() {
                       onChange={getInput}
                       name="stat"
                       value={data.stat}
+                      required
                     />
                   </td>
                 </tr>
@@ -164,21 +179,6 @@ function App() {
               Submit
             </button>
           </form>
-          {/* <div>
-            {empdata.map((val) => {
-              return (
-                <>
-                  <p>{val.index}</p>
-                  <p>{val.sr}</p>
-                  <p>{val.email}</p>
-                  <p>{val.date}</p>
-                  <p>{val.task}</p>
-                  <p>{val.description}</p>
-                  <p>{val.stat}</p>
-                </>
-              );
-            })}
-          </div> */}
         </div>
       </div>
     </>
