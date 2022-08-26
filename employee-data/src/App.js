@@ -25,6 +25,10 @@ function App() {
     value = e.target.value;
     // setData({ ...data, [name]: value });
 
+    if (name == "sr") {
+      value = Math.max(1, Math.min(50, Number(value)));
+    }
+
     if (name === "email") {
       if (!isValidEmail(value)) {
         setError("Email is invalid");
@@ -39,12 +43,11 @@ function App() {
   };
 
   const getData = (e) => {
-    // e.preventDefault();
     const d = new Date(data.date).toLocaleDateString();
 
     if (data === "") {
     } else {
-      // e.preventDefault();
+      e.preventDefault();
       console.log(
         "Number : " +
           data.sr +
@@ -162,14 +165,28 @@ function App() {
                     ></textarea>
                   </td>
                   <td className="px-0">
-                    <input
+                    {/* <input
                       type="text"
                       className="w-100 py-2 border-0"
                       onChange={getInput}
                       name="stat"
                       value={data.stat}
                       required
-                    />
+                    /> */}
+                    <select
+                      name="stat"
+                      id=""
+                      value={data.stat}
+                      required
+                      className="w-100 py-2 border-0"
+                      onChange={getInput}
+                    >
+                      <option value="" disabled>
+                        Select Status
+                      </option>
+                      <option value="Working">Working</option>
+                      <option value="Done">Done</option>
+                    </select>
                   </td>
                 </tr>
               </tbody>
