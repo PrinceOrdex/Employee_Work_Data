@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./style.css";
-// import { empdata } from "./empData";
-// import validator from "validator";
 
 function App() {
   const [error, setError] = useState(null);
@@ -14,10 +12,6 @@ function App() {
     stat: "",
   });
 
-
-
-
-
   function isValidEmail(email) {
     // return /\S+@\S+\.\S+/.test(email);
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
@@ -27,7 +21,6 @@ function App() {
   const getInput = (e) => {
     name = e.target.name;
     value = e.target.value;
-    // setData({ ...data, [name]: value });
 
     if (name == "sr") {
       value = Math.max(1, Math.min(50, Number(value)));
@@ -54,22 +47,22 @@ function App() {
       e.preventDefault();
       console.log(
         "Number : " +
-        data.sr +
-        "\n" +
-        "Email : " +
-        data.email +
-        "\n" +
-        "Date : " +
-        d +
-        "\n" +
-        "Task : " +
-        data.task +
-        "\n" +
-        "Description : " +
-        data.description +
-        "\n" +
-        "State : " +
-        data.stat
+          data.sr +
+          "\n" +
+          "Email : " +
+          data.email +
+          "\n" +
+          "Date : " +
+          d +
+          "\n" +
+          "Task : " +
+          data.task +
+          "\n" +
+          "Description : " +
+          data.description +
+          "\n" +
+          "State : " +
+          data.stat
       );
     }
 
@@ -131,7 +124,6 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-
                 <tr>
                   <th scope="row" className="px-0 pr-1">
                     <input
@@ -143,7 +135,7 @@ function App() {
                       required
                     />
                   </th>
-                  {/* <td className='px-0 pr-1'><input type="text" className='w-100 py-2 px-0 border-0' /></td> */}
+
                   <td className="px-0 pr-1">
                     <textarea
                       id=""
@@ -156,7 +148,7 @@ function App() {
                       required
                     ></textarea>
                   </td>
-                  {/* <td className='px-0 pr-1'><input type="text" className='w-100 py-2 border-0' /></td> */}
+
                   <td className="px-0 pr-1">
                     <textarea
                       id=""
@@ -170,14 +162,6 @@ function App() {
                     ></textarea>
                   </td>
                   <td className="px-0">
-                    {/* <input
-                      type="text"
-                      className="w-100 py-2 border-0"
-                      onChange={getInput}
-                      name="stat"
-                      value={data.stat}
-                      required
-                    /> */}
                     <select
                       name="stat"
                       id=""
@@ -194,12 +178,9 @@ function App() {
                     </select>
                   </td>
                 </tr>
-
               </tbody>
-
             </table>
 
-            {/* <button type="submit">Submit</button> */}
             <button type="submit" class="btn btn-secondary" onClick={getData}>
               Submit
             </button>
