@@ -14,6 +14,10 @@ function App() {
     stat: "",
   });
 
+
+
+
+
   function isValidEmail(email) {
     // return /\S+@\S+\.\S+/.test(email);
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
@@ -50,22 +54,22 @@ function App() {
       e.preventDefault();
       console.log(
         "Number : " +
-          data.sr +
-          "\n" +
-          "Email : " +
-          data.email +
-          "\n" +
-          "Date : " +
-          d +
-          "\n" +
-          "Task : " +
-          data.task +
-          "\n" +
-          "Description : " +
-          data.description +
-          "\n" +
-          "State : " +
-          data.stat
+        data.sr +
+        "\n" +
+        "Email : " +
+        data.email +
+        "\n" +
+        "Date : " +
+        d +
+        "\n" +
+        "Task : " +
+        data.task +
+        "\n" +
+        "Description : " +
+        data.description +
+        "\n" +
+        "State : " +
+        data.stat
       );
     }
 
@@ -127,6 +131,7 @@ function App() {
                 </tr>
               </thead>
               <tbody>
+
                 <tr>
                   <th scope="row" className="px-0 pr-1">
                     <input
@@ -189,8 +194,11 @@ function App() {
                     </select>
                   </td>
                 </tr>
+
               </tbody>
+
             </table>
+
             {/* <button type="submit">Submit</button> */}
             <button type="submit" class="btn btn-secondary" onClick={getData}>
               Submit
