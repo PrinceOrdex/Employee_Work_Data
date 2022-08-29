@@ -3,6 +3,7 @@ import "./style.css";
 
 function App() {
   const [error, setError] = useState(null);
+
   const [data, setData] = useState({
     sr: null,
     email: "",
@@ -44,7 +45,7 @@ function App() {
 
     if (data === "") {
     } else {
-      e.preventDefault();
+      // e.preventDefault();
       console.log(
         "Number : " +
           data.sr +
@@ -68,6 +69,7 @@ function App() {
 
     console.log(data);
     const jsonData = JSON.stringify(data);
+
     console.log(jsonData);
   };
 
@@ -83,7 +85,7 @@ function App() {
               <label for="email">Email address</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-50"
                 id="email"
                 aria-describedby="emailHelp"
                 onChange={getInput}
@@ -97,7 +99,7 @@ function App() {
               <label for="date">Date</label>
               <input
                 type="date"
-                className="form-control"
+                className="form-control w-50"
                 id="date"
                 aria-describedby="date"
                 onChange={getInput}
